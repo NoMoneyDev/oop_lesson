@@ -26,7 +26,8 @@ class AccountDB:
         for account in self.account_database:
             s += str(account) + ", "
         return s
-        
+
+
 class Account:
     def __init__(self, num, type, account_name, balance):
         self.account_number = num

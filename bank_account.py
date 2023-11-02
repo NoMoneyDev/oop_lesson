@@ -1,7 +1,6 @@
 """
 Third commit for no apparent reason
 """
-
 class AccountDB:
     def __init__(self):
         self.account_database = []
@@ -36,6 +35,7 @@ class AccountDB:
             if account.account_number == id:
                 self.account_database.remove(account)
                 return
+        return "No Account of that ID in the database"
 
 
 class Account:
