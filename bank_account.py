@@ -19,13 +19,19 @@ class AccountDB:
         for account in self.account_database:
             if account.account_number == account_num:
                 return account
-        return None
+        return Account(-9999, "None", "None", -9999)
 
     def __str__(self):
         s = ''
         for account in self.account_database:
             s += str(account) + ", "
         return s
+
+    def delete(self, id):
+        for account in self.account_database:
+            if account.account_number == id:
+                self.account_database.remove(account)
+                return
 
 
 class Account:
@@ -36,6 +42,8 @@ class Account:
         self.balance = balance
 
     def deposit(self, amount):
+        if self.account_number == "-9999":
+            return
         self.balance += amount
 
     def withdraw(self, amount):
@@ -63,5 +71,8 @@ my_account_DB.search_public("0003").deposit(50)
 print(my_account_DB)
 my_account_DB.search_public("0003").withdraw(100)
 print(my_account_DB)
-my_account_DB.search_public("0010").deposit(50)
+my_account_DB.search_public("0010").deposit(50)  # Change back to "0010" later
 print(my_account_DB)
+my_account_DB.delete("0004")
+print(my_account_DB)
+
